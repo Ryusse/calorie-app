@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@elements/*": ["src/shared/elements/*"],
+      "@components/*": ["src/shared/components/*"],
+      "@pages/*": ["src/pages/*"]
+    }
+  }
+}
