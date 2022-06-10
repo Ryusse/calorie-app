@@ -90,7 +90,7 @@ module.exports = {
         ],
       },
       backgroundImage: {
-        'auth-background': "url('./src/assets/images/food-background.jpg')",
+        'auth-background': "url('src/assets/images/food-background.jpg')",
         'footer-texture': "url('/img/footer-texture.png')",
       },
 
