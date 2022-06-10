@@ -1,4 +1,4 @@
-import { GridWrapper, Header } from '@elements/organisms'
+import { GridWrapper, Header } from '@elements/organisms';
 
 export const Home = () => {
   return (
@@ -10,5 +10,5 @@ export const Home = () => {
         </main>
       </GridWrapper>
     </>
-  )
-}
+  );
+};

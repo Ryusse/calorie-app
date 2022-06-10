@@ -17,13 +17,16 @@
 }
 
 .button-primary {
-  @apply bg-orange-500 border-orange-500 text-slate-50 font-semibold transition-all ease-in-out;
+  @apply bg-primary-red-200  text-primary-grey-900 font-semibold transition-all ease-in-out;
   &:disabled {
-    @apply bg-gray-500 border-gray-500 cursor-default;
+    @apply bg-disabled  cursor-default;
+    &:hover {
+      @apply bg-disabled  cursor-default;
+    }
   }
 
   &:hover,
   &:focus {
-    @apply bg-orange-600;
+    @apply bg-primary-red-300;
   }
 }

@@ -10,6 +10,7 @@ export default defineConfig({
     alias: {
       '@elements': path.resolve('./src/shared/elements'),
       '@components': path.resolve('./src/shared/components'),
+      '@utils': path.resolve('./src/shared/utils'),
       '@pages': path.resolve('./src/pages'),
     },
   },

@@ -1,10 +1,9 @@
-import { Header } from '@elements/organisms'
+import { AuthLogin } from '@elements/organisms';
 
 export const Login = () => {
   return (
-    <>
-      <Header />
-      <main>Login</main>
-    </>
-  )
-}
+    <main className="p-[3vw] relative bg-auth-background bg-no-repeat bg-cover bg-center w-full h-screen ">
+      <AuthLogin />
+    </main>
+  );
+};

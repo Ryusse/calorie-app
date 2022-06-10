@@ -1,0 +1,11 @@
+.form-group {
+  @apply mb-6 relative;
+
+  .form-control_error {
+    @apply border border-primary-red-300 text-primary-red-300 placeholder:text-primary-red-300;
+  }
+
+  .form-error {
+    @apply absolute mt-1 font-semibold text-primary-red-300 text-paragraph-05;
+  }
+}
