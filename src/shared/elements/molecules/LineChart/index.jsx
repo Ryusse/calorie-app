@@ -1,41 +1,86 @@
-import { useMemo } from 'react'
+import React, { useMemo } from 'react';
 
-import { Chart as ChartJS, ArcElement, Title, Tooltip, Legend } from 'chart.js'
-import { Doughnut } from 'react-chartjs-2'
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+  Filler,
+} from 'chart.js';
+import { Bar } from 'react-chartjs-2';
 
-ChartJS.register(Tooltip, Title, ArcElement, Legend)
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+  Filler
+);
+
+// ChartJS.register(Tooltip, Title, ArcElement, Legend);
+
+const scores = [80, 25, 50, 100, 150, 200, 20];
+const labels = [
+  'Lunes',
+  'Martes',
+  'Miercoles',
+  'Jueves',
+  'Viernes',
+  'Sabado',
+  'Domingo',
+];
 
 const options = {
+  fill: true,
+  animations: false,
+  scales: {
+    x: {
+      grid: {
+        display: false,
+      },
+    },
+    y: {
+      grid: {
+        display: false,
+      },
+    },
+  },
   responsive: true,
-}
+  plugins: {
+    legend: {
+      display: true,
+    },
+  },
+};
 
 export const LineChart = () => {
   const data = useMemo(() => {
     return {
       datasets: [
         {
-          label: 'My First Dataset',
-          data: [300, 50, 100],
-          backgroundColor: [
-            'rgb(255, 99, 132)',
-            'rgb(54, 162, 235)',
-            'rgb(255, 205, 86)',
-          ],
-          hoverOffset: 4,
+          label: 'Calorias',
+          tension: 0.3,
+          data: scores,
+          borderColor: 'rgb(246, 106, 118)',
+          backgroundColor: 'rgb(246, 106, 118)',
         },
       ],
-      labels: ['Red', 'Blue', 'Yellow'],
-    }
-  }, [])
+      labels,
+    };
+  }, []);
 
   return (
     <div className=" flex gap-4 flex-wrap justify-center">
-      <div className="w-[15rem]">
-        <Doughnut data={data} options={options} />
-      </div>
-      <div className="w-[15rem]">
-        <Doughnut data={data} options={options} />
+      <div className="w-full">
+        <Bar data={data} options={options} />
       </div>
     </div>
-  )
-}
+  );
+};

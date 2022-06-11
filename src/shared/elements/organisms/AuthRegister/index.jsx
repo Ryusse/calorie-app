@@ -27,10 +27,10 @@ export const AuthRegister = () => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="form-group">
           <Input
-            placeholder="Ingresa tu correo"
+            placeholder="Usuario"
             name="email"
             htmlFor="email"
-            label="Correo electrónico"
+            label="Nombre"
             type="email"
             className={`rounded-[10px] ${
               errors.email ? 'form-control_error' : ''
@@ -45,8 +45,9 @@ export const AuthRegister = () => {
           )}
         </div>
 
-        <div className="md:flex gap-4">
-          <div className="form-group">
+        {/* <div className="md:flex gap-4"> */}
+        <div>
+          {/* <div className="form-group">
             <Input
               placeholder="Ingresa tu nombre"
               name="name"
@@ -61,7 +62,7 @@ export const AuthRegister = () => {
             {errors.name && errors.name.type === 'required' && (
               <p className="form-error">Campo obligatorio.</p>
             )}
-          </div>
+          </div> */}
 
           <div className="form-group">
             <Input
@@ -100,21 +101,25 @@ export const AuthRegister = () => {
           )}
         </div>
 
-        <Button
-          disabled={!formState.isValid}
-          classButton="primary"
-          className="mt-4"
-          type=""
-        >
-          Enviar
-        </Button>
+        <Link to="/">
+          <Button
+            disabled={!formState.isValid}
+            classButton="primary"
+            className="mt-4"
+            type=""
+          >
+            Registrarse
+          </Button>
+        </Link>
       </form>
 
       <div className="w-full mt-auto landscape:mt-10 md:mt-4 text-center">
-        <Link className="text-paragraph-03 font-semibold" to="/login">
+        <p className="text-paragraph-03 font-semibold">
           ¿Ya tienes una cuenta?,
-          <span className=" text-primary-red-300"> Ingresa</span>.
-        </Link>
+          <Link className="text-primary-red-300" to="/login">
+            Ingresa.
+          </Link>
+        </p>
       </div>
     </div>
   );

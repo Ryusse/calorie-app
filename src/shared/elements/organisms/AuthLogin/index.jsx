@@ -29,20 +29,20 @@ export const AuthLogin = () => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="form-group">
           <Input
-            placeholder="Ingresa tu email"
+            placeholder="Usuario"
             name="email"
             htmlFor="email"
-            label="Correo electrónico"
+            label="Usuario"
             type="email"
             className={`rounded-[10px] ${
               errors.email ? 'form-control_error' : ''
             }`}
-            {...register('email', { required: true, pattern: Regex.email })}
+            {...register('email', { required: true, minLength: 8 })}
           />
           {errors.email && errors.email.type === 'required' && (
             <p className="form-error">Campo obligatorio.</p>
           )}
-          {errors.email && errors.email.type === 'pattern' && (
+          {errors.email && errors.email.type === 'minLength' && (
             <p className="form-error">Formato no válido.</p>
           )}
         </div>
@@ -67,21 +67,25 @@ export const AuthLogin = () => {
           )}
         </div>
 
-        <Button
-          disabled={!formState.isValid}
-          classButton="primary"
-          className="mt-4"
-          type=""
-        >
-          Enviar
-        </Button>
+        <Link to="/">
+          <Button
+            disabled={!formState.isValid}
+            classButton="primary"
+            className="mt-4"
+            type=""
+          >
+            Ingresar
+          </Button>
+        </Link>
       </form>
 
       <div className="w-full mt-auto landscape:mt-10 md:mt-4 text-center">
-        <Link className="text-paragraph-03 font-semibold" to="/register">
+        <p className="text-paragraph-03 font-semibold">
           ¿Aún no tienes una cuenta?,
-          <span className=" text-primary-red-300"> Regístrate</span>.
-        </Link>
+          <Link className="text-primary-red-300" to="/register">
+            Regístrate.
+          </Link>
+        </p>
       </div>
     </div>
   );

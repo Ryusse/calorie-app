@@ -18,9 +18,9 @@ module.exports = {
       fontSize: {
         'heading-01': [
           '1.875rem', // 30px
-          {
-            lineHeight: '4.063rem', // 65px
-          },
+          // {
+          //   lineHeight: '4.063rem', // 65px
+          // },
         ],
         'heading-02': [
           '1.563rem', // 25px
