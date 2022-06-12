@@ -1,7 +1,7 @@
-import { RoutesIndex } from './routes'
+import { RoutesIndex } from './routes';
 
-import './styles/index.scss'
+import './styles/index.scss';
 
 export const App = () => {
-  return <RoutesIndex />
-}
+  return <RoutesIndex />;
+};
