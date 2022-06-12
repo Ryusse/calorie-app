@@ -1,5 +1,4 @@
 import { Button, Input } from '@elements/atoms';
-import { Regex } from '@utils/index';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 
@@ -27,60 +26,44 @@ export const AuthRegister = () => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="form-group">
           <Input
-            placeholder="Usuario"
-            name="email"
-            htmlFor="email"
+            placeholder="Ingresa tu nombre"
+            name="name"
+            htmlFor="name"
             label="Nombre"
-            type="email"
+            type="text"
             className={`rounded-[10px] ${
-              errors.email ? 'form-control_error' : ''
+              errors.name ? 'form-control_error' : ''
             }`}
-            {...register('email', { required: true, pattern: Regex.email })}
+            {...register('name', { required: true, minLength: 8 })}
           />
-          {errors.email && errors.email.type === 'required' && (
+          {errors.name && errors.name.type === 'required' && (
             <p className="form-error">Campo obligatorio.</p>
           )}
-          {errors.email && errors.email.type === 'pattern' && (
-            <p className="form-error">Formato no válido.</p>
+          {errors.name && errors.name.type === 'minLength' && (
+            <p className="form-error">Minimo ocho caracteres.</p>
           )}
         </div>
 
-        {/* <div className="md:flex gap-4"> */}
-        <div>
-          {/* <div className="form-group">
-            <Input
-              placeholder="Ingresa tu nombre"
-              name="name"
-              htmlFor="name"
-              label="Nombre"
-              type="text"
-              className={`rounded-[10px] ${
-                errors.name ? 'form-control_error' : ''
-              }`}
-              {...register('name', { required: true })}
-            />
-            {errors.name && errors.name.type === 'required' && (
-              <p className="form-error">Campo obligatorio.</p>
-            )}
-          </div> */}
-
-          <div className="form-group">
-            <Input
-              placeholder="Ingresa tu usuario"
-              name="userName"
-              htmlFor="userName"
-              label="Nombre de usuario"
-              type="text"
-              className={`rounded-[10px] ${
-                errors.userName ? 'form-control_error' : ''
-              }`}
-              {...register('userName', { required: true })}
-            />
-            {errors.userName && errors.userName.type === 'required' && (
-              <p className="form-error">Campo obligatorio.</p>
-            )}
-          </div>
+        <div className="form-group">
+          <Input
+            placeholder="Ingresa tu usuario"
+            name="userName"
+            htmlFor="userName"
+            label="Usuario"
+            type="text"
+            className={`rounded-[10px] ${
+              errors.userName ? 'form-control_error' : ''
+            }`}
+            {...register('userName', { required: true, minLength: 8 })}
+          />
+          {errors.userName && errors.userName.type === 'required' && (
+            <p className="form-error">Campo obligatorio.</p>
+          )}
+          {errors.userName && errors.userName.type === 'minLength' && (
+            <p className="form-error">Minimo ocho caracteres.</p>
+          )}
         </div>
+
         <div className="form-group">
           <Input
             placeholder="Ingresa tu contraseña"
@@ -101,16 +84,14 @@ export const AuthRegister = () => {
           )}
         </div>
 
-        <Link to="/">
-          <Button
-            disabled={!formState.isValid}
-            classButton="primary"
-            className="mt-4"
-            type=""
-          >
-            Registrarse
-          </Button>
-        </Link>
+        <Button
+          disabled={!formState.isValid}
+          classButton="primary"
+          className="mt-4"
+          type=""
+        >
+          Registrarse
+        </Button>
       </form>
 
       <div className="w-full mt-auto landscape:mt-10 md:mt-4 text-center">
