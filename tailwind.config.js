@@ -126,6 +126,9 @@ module.exports = {
         },
         others: {
           transparency: {
+            red: {
+              100: 'rgba(229, 115, 125, 0.1)',
+            },
             grey: {
               900: 'rgba(0, 0, 0, 0.9)',
               800: 'rgba(0, 0, 0, 0.8)',

@@ -1,8 +1,10 @@
-@use 'base';
-@use 'button';
-@use 'form';
-@use 'grid';
-@use 'input';
+@use "base";
+@use "button";
+@use "form";
+@use "grid";
+@use "icon";
+@use "input";
+@use "navLink";
 
 @tailwind base;
 @tailwind components;

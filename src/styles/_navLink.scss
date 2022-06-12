@@ -1,0 +1,10 @@
+.nav-link {
+  &.active {
+    @apply bg-others-transparency-red-100 text-primary-red-300 after:block ;
+    & svg {
+      @apply fill-primary-red-300;
+    }
+  }
+
+
+}
