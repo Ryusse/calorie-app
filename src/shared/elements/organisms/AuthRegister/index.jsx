@@ -17,10 +17,10 @@ export const AuthRegister = () => {
 
   return (
     <div
-      className="flex landscape:block flex-col gap-6 w-full h-full overflow-y-auto landscape:h-auto md:h-auto md:w-[30rem] absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 md:rounded-[1rem] p-6 md:p-9 
-    bg-others-transparency-white-900"
+      className="absolute top-1/2 left-1/2 flex h-full w-full -translate-y-1/2 -translate-x-1/2 flex-col gap-6 overflow-y-auto bg-others-transparency-white-900 p-6 md:h-auto md:w-[30rem] md:rounded-[1rem] md:p-9 landscape:block
+    landscape:h-auto"
     >
-      <h1 className="text-heading-01 font-semibold text-center mb-4">
+      <h1 className="mb-4 text-center text-heading-01 font-semibold">
         Registrarse
       </h1>
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -94,7 +94,7 @@ export const AuthRegister = () => {
         </Button>
       </form>
 
-      <div className="w-full mt-auto landscape:mt-10 md:mt-4 text-center">
+      <div className="mt-auto w-full text-center md:mt-4 landscape:mt-10">
         <p className="text-paragraph-03 font-semibold">
           ¿Ya tienes una cuenta?,
           <Link className="text-primary-red-300" to="/login">

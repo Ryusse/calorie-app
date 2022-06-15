@@ -43,8 +43,8 @@ export const Input = forwardRef(
         <input
           ref={ref}
           style={{ borderRadius }}
-          className={`border  border-primary-grey-100 text-paragraph-02 outline-none w-full placeholder:text-paragraph-03 input-lg placeholder:text-placeholder focus:shadow-01 ${borderRadius} ${
-            disabled ? 'text-disabled bg-primary-grey-800' : ''
+          className={`input-lg w-full border border-primary-grey-100 text-paragraph-02 outline-none placeholder:text-paragraph-03 placeholder:text-placeholder focus:shadow-01 ${borderRadius} ${
+            disabled ? 'bg-primary-grey-800 text-disabled' : ''
           } ${icon ? 'pr-10' : ''} ${className}`}
           disabled={disabled}
           step={step}

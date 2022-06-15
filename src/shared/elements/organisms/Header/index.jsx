@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 export const Header = () => {
   return (
-    <header className="bg-gray-50 border-b border-gray-700 shadow-sm">
+    <header className="border-b border-gray-700 bg-gray-50 shadow-sm">
       <nav className="flex justify-start">
         <ul className="flex justify-between gap-2">
           <li>

@@ -1,15 +1,15 @@
 import React, { useMemo } from 'react';
 
 import {
-  Chart as ChartJS,
+  BarElement,
   CategoryScale,
+  Chart as ChartJS,
+  Filler,
+  Legend,
   LinearScale,
   PointElement,
-  BarElement,
   Title,
   Tooltip,
-  Legend,
-  Filler,
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 
@@ -77,7 +77,7 @@ export const LineChart = () => {
   }, []);
 
   return (
-    <div className=" flex gap-4 flex-wrap justify-center">
+    <div className="flex flex-wrap justify-center gap-4">
       <div className="w-full">
         <Bar data={data} options={options} />
       </div>
