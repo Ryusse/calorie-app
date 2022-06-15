@@ -3,6 +3,8 @@ import React from 'react';
 import Food from './icons/icFood';
 import Logo from './icons/icLogo';
 import Logout from './icons/icLogout';
+import Menu from './icons/icMenu';
+import Profile from './icons/icProfile';
 import Statistics from './icons/icStatistics';
 
 const iconTypes = {
@@ -19,6 +21,16 @@ const iconTypes = {
   icLogout: {
     component: Logout,
     alt: 'Logout',
+  },
+
+  icMenu: {
+    component: Menu,
+    alt: 'Menu',
+  },
+
+  icProfile: {
+    component: Profile,
+    alt: 'Profile',
   },
 
   icStatistics: {

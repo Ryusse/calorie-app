@@ -1,5 +1,6 @@
 export * from './AuthLogin';
 export * from './AuthRegister';
+export * from './CardListFood';
 export * from './GridWrapper';
-export * from './Header';
+export * from './HeaderDashboardaMobile';
 export * from './Sidebar';
