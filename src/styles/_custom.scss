@@ -1,0 +1,15 @@
+.leftFadeIn {
+  opacity: 0;
+  animation: FadeIn 1s cubic-bezier(.36, .07, .19, .97) both;
+}
+
+@keyframes FadeIn {
+  10% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

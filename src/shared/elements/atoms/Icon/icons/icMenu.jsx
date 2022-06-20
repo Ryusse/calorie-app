@@ -1,6 +1,7 @@
-const icMenu = ({ className }) => {
+const icMenu = ({ className, onClick }) => {
   return (
     <svg
+      onClick={onClick}
       className={className}
       width="22"
       height="16"
