@@ -5,6 +5,7 @@ import Logo from './icons/icLogo';
 import Logout from './icons/icLogout';
 import Menu from './icons/icMenu';
 import Profile from './icons/icProfile';
+import Setting from './icons/icSetting';
 import Statistics from './icons/icStatistics';
 
 const iconTypes = {
@@ -30,6 +31,11 @@ const iconTypes = {
 
   icProfile: {
     component: Profile,
+    alt: 'Profile',
+  },
+
+  icSetting: {
+    component: Setting,
     alt: 'Profile',
   },
 

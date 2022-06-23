@@ -15,7 +15,7 @@ export const HeaderDashboardaMobile = () => {
 
   return (
     <>
-      <header className="relative sticky top-0 z-20 flex w-full items-center justify-between bg-primary-grey-900 p-4 shadow-01 lg:hidden">
+      <header className="relative sticky top-0 z-20 flex w-full items-center justify-between bg-primary-grey-900 p-4 shadow-01 md:px-8 lg:hidden">
         <Icon name="icMenu" onClick={() => setIsMenuOpen(!isMenuOpen)} />
         <div className="flex items-center gap-2">
           <Icon name="icLogo" className="mt-3" />

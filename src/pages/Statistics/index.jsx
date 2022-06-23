@@ -1,3 +1,4 @@
+import { LayoutIntern } from '@components/LayoutIntern';
 import { LineChart } from '@elements/molecules';
 import { GridWrapper, Sidebar } from '@elements/organisms';
 
@@ -6,7 +7,7 @@ export const Statistics = () => {
     <main>
       <GridWrapper className="bg-primary-grey-700">
         <Sidebar />
-        <main className="col-span-4 bg-primary-grey-700 py-14 px-10 md:col-span-8 lg:col-span-10 lg:col-start-3">
+        <LayoutIntern>
           <div>
             <h1 className="text-heading-01 font-semibold">Hola, Marco.</h1>
             <p className="mt-1 font-medium text-primary-grey-300">
@@ -20,7 +21,7 @@ export const Statistics = () => {
             </h2>
             <LineChart />
           </div>
-        </main>
+        </LayoutIntern>
       </GridWrapper>
     </main>
   );
