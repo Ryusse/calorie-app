@@ -3,8 +3,8 @@ module.exports = {
   theme: {
     screens: {
       md: '768px', // { min: 768, max: 1023 }
-      lg: '1023px', // { min: 1024, max: 1799 }
-      xl: '1801px', // { min: 1800 }
+      lg: '1023px', // { min: 1024, max: 1300 }
+      xl: '1700px', // { min: 1800 }
     },
 
     extend: {
@@ -111,8 +111,10 @@ module.exports = {
             100: '#000000',
           },
           red: {
+            600: '#FEC0CF',
             300: '#F66A76',
             200: '#FA4C5B',
+            100: '#F51D5A',
           },
         },
         feedback: {
@@ -120,8 +122,8 @@ module.exports = {
             100: '#FFF2D1',
           },
           success: {
-            200: '#3A9900',
-            100: '#D3F4D3',
+            200: '#D2F3EA',
+            100: '#189E78',
           },
         },
         others: {

@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { Button, Input } from '@elements/atoms';
 import { useForm } from 'react-hook-form';
 
-export const CustomProfile = () => {
+export const CustomProfile = ({ className }) => {
   const {
     register,
     handleSubmit,
@@ -19,7 +19,7 @@ export const CustomProfile = () => {
   const onSubmit = async () => {};
 
   return (
-    <div className="mt-10">
+    <div className={`mt-10 ${className}`}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="form-group">
           <Input

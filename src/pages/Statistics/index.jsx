@@ -1,12 +1,13 @@
 import { LayoutIntern } from '@components/LayoutIntern';
 import { LineChart } from '@elements/molecules';
-import { GridWrapper, Sidebar } from '@elements/organisms';
+import { GridWrapper, Header, Sidebar } from '@elements/organisms';
 
 export const Statistics = () => {
   return (
     <main>
       <GridWrapper className="bg-primary-grey-700">
         <Sidebar />
+        <Header />
         <LayoutIntern>
           <div>
             <h1 className="text-heading-01 font-semibold">Hola, Marco.</h1>

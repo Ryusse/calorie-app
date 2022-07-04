@@ -3,5 +3,5 @@ export * from './AuthRegister';
 export * from './CardListFood';
 export * from './CustomProfile';
 export * from './GridWrapper';
-export * from './HeaderDashboardaMobile';
+export * from './Header';
 export * from './Sidebar';
