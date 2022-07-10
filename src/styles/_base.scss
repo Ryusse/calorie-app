@@ -1,5 +1,9 @@
 @layer base {
   * {
-    @apply font-outfit text-primary-grey-200;
+    @apply font-poppins text-primary-lightBlue-100
+  }
+
+  html {
+    @apply bg-primary-grey-700;
   }
 }

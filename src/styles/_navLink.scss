@@ -1,6 +1,6 @@
 .nav-link {
   &.active {
-    @apply bg-others-transparency-red-100 text-primary-red-300 after:block ;
+    @apply bg-others-transparency-red-100 text-primary-red-300 after:block rounded-[5px];
     & svg {
       @apply fill-primary-red-300;
     }

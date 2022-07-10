@@ -1,7 +1,10 @@
 import Icon from '@elements/atoms/Icon';
+import useWindowDimensions from '@hooks/useWindowDimensions';
 import { NavLink } from 'react-router-dom';
 
 export const Navigation = ({ onClose }) => {
+  const { width } = useWindowDimensions();
+
   return (
     <div className="grid h-full grid-rows-[auto_auto_1fr] overflow-y-auto">
       <div className="border-t border-primary-grey-600 py-5 lg:border-0">
@@ -10,7 +13,10 @@ export const Navigation = ({ onClose }) => {
         </p>
         <nav className="mt-4">
           <ul className="text-paragraph-01">
-            <li onClick={() => onClose()} className="relative">
+            <li
+              onClick={() => (width < 1023 ? onClose() : null)}
+              className="relative"
+            >
               <NavLink
                 className="nav-link flex items-center gap-3 py-3 px-4 text-paragraph-02 font-medium text-primary-grey-300 after:absolute after:left-0 after:hidden after:h-full after:w-[2.5px] after:rounded-[10px] after:bg-primary-red-300 after:content-['']"
                 to="/Statistics"
@@ -23,7 +29,10 @@ export const Navigation = ({ onClose }) => {
               </NavLink>
             </li>
 
-            <li onClick={() => onClose()} className="relative">
+            <li
+              onClick={() => (width < 1023 ? onClose() : null)}
+              className="relative"
+            >
               <NavLink
                 className="nav-link flex items-center gap-3 py-3 px-4 text-paragraph-02 font-medium text-primary-grey-300 after:absolute after:left-0 after:hidden after:h-full after:w-[2.5px] after:rounded-[10px] after:bg-primary-red-300 after:content-['']"
                 to="/Food"
@@ -44,7 +53,7 @@ export const Navigation = ({ onClose }) => {
         </p>
         <nav className="mt-4">
           <ul className="text-paragraph-01">
-            <li onClick={() => onClose()} className="relative">
+            <li onClick={() => onClose} className="relative">
               <NavLink
                 className="nav-link flex items-center gap-3 py-3 px-4 text-paragraph-02 font-medium text-primary-grey-300 after:absolute after:left-0 after:hidden after:h-full after:w-[2.5px] after:rounded-[10px] after:bg-primary-red-300 after:content-['']"
                 to="/profile"
@@ -57,7 +66,10 @@ export const Navigation = ({ onClose }) => {
               </NavLink>
             </li>
 
-            <li onClick={() => onClose()} className="relative">
+            <li
+              onClick={() => (width < 1023 ? onClose() : null)}
+              className="relative"
+            >
               <NavLink
                 className="nav-link flex items-center gap-3 py-3 px-4 text-paragraph-02 font-medium text-primary-grey-300 after:absolute after:left-0 after:hidden after:h-full after:w-[2.5px] after:rounded-[10px] after:bg-primary-red-300 after:content-['']"
                 to="/"
@@ -76,7 +88,10 @@ export const Navigation = ({ onClose }) => {
       <div className="mt-auto cursor-pointer border-t border-primary-grey-600 pt-5">
         <nav className="">
           <ul className="text-paragraph-01">
-            <li onClick={() => onClose()} className="relative">
+            <li
+              onClick={() => (width < 1023 ? onClose() : null)}
+              className="relative"
+            >
               <div className="nav-link flex items-center gap-3 py-3 px-4 text-paragraph-02 font-medium text-primary-grey-300 after:absolute after:left-0 after:hidden after:h-full after:w-[2.5px] after:rounded-[10px] after:bg-primary-red-300 after:content-['']">
                 <Icon
                   name="icLogout"

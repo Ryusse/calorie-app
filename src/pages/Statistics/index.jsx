@@ -16,7 +16,7 @@ export const Statistics = () => {
             </p>
           </div>
 
-          <div className="mt-12 max-w-[40rem] rounded-[10px] bg-primary-grey-900 py-9 px-10 shadow-01">
+          <div className="mt-12 rounded-[10px] bg-primary-grey-900 p-4 shadow-01 lg:max-w-[40rem] lg:p-8">
             <h2 className="mb-9 text-heading-03 font-semibold">
               Calorias consumidas
             </h2>

@@ -14,7 +14,7 @@ export const Profile = () => {
       <Sidebar />
       <Header />
       <LayoutIntern>
-        <h1 className="mb-7 text-center text-heading-01 font-semibold lg:mb-[3rem] lg:text-left">
+        <h1 className="mb-4 text-center text-heading-01 font-semibold lg:mb-[3rem] lg:text-left">
           Mi perfil
         </h1>
         <div className="flex w-full flex-col lg:max-w-[40rem] lg:flex-row lg:gap-20">

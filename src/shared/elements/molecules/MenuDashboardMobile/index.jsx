@@ -27,7 +27,7 @@ export const MenuDashboardMobile = ({ open, refMenu, onClose }) => {
             @joelangel99
           </p>
         </div>
-        <Navigation onClose={onClose} />
+        <Navigation onClose={() => onClose} />
       </div>
 
       <div

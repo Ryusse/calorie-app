@@ -12,7 +12,7 @@ module.exports = {
         '01': '0px 4px 20px rgba(165, 171, 184, 0.2)',
       },
       fontFamily: {
-        outfit: ['Outfit', 'sans-serif'],
+        poppins: ['Poppins', 'sans-serif'],
       },
 
       fontSize: {
@@ -107,7 +107,7 @@ module.exports = {
             500: '#828282',
             400: '#4A4A4A',
             300: '#A5ABB8',
-            200: '#1E1E1E',
+            200: '#17181F',
             100: '#000000',
           },
           red: {
@@ -115,6 +115,12 @@ module.exports = {
             300: '#F66A76',
             200: '#FA4C5B',
             100: '#F51D5A',
+          },
+          lightBlue: {
+            700: '#E3EDF2',
+            500: '#9FC9DD',
+            200: '#4E7D96',
+            100: '#0A0D25',
           },
         },
         feedback: {

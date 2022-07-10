@@ -12,8 +12,10 @@ export const Food = () => {
       <GridWrapper className="bg-primary-grey-700">
         <Sidebar />
         <Header />
-        <LayoutIntern>
-          <h1 className="mb-[3rem] text-heading-01 font-semibold">Alimentos</h1>
+        <LayoutIntern className="relative">
+          <h1 className="mb-4 text-heading-01 font-semibold lg:mb-10">
+            Alimentos
+          </h1>
           <CardListFood />
         </LayoutIntern>
       </GridWrapper>

@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
 
+import useWindowDimensions from '@hooks/useWindowDimensions';
 import {
   BarElement,
   CategoryScale,
@@ -26,41 +27,44 @@ ChartJS.register(
 
 // ChartJS.register(Tooltip, Title, ArcElement, Legend);
 
-const scores = [80, 25, 50, 100, 150, 200, 20];
-const labels = [
-  'Lunes',
-  'Martes',
-  'Miercoles',
-  'Jueves',
-  'Viernes',
-  'Sabado',
-  'Domingo',
-];
-
-const options = {
-  fill: true,
-  animations: false,
-  scales: {
-    x: {
-      grid: {
-        display: false,
-      },
-    },
-    y: {
-      grid: {
-        display: false,
-      },
-    },
-  },
-  responsive: true,
-  plugins: {
-    legend: {
-      display: true,
-    },
-  },
-};
-
 export const LineChart = () => {
+  const { width } = useWindowDimensions();
+
+  const scores = [80, 25, 50, 100, 150, 200, 20];
+  const labelsMobile = ['L', 'M', 'M', 'J', 'V', 'S', 'D'];
+  const labelsDesktop = [
+    'Lunes',
+    'Martes',
+    'Miércoles',
+    'Jueves',
+    'Viernes',
+    'Sábado',
+    'Domingo',
+  ];
+
+  const options = {
+    fill: true,
+    animations: false,
+    scales: {
+      x: {
+        grid: {
+          display: false,
+        },
+      },
+      y: {
+        grid: {
+          display: false,
+        },
+      },
+    },
+    responsive: true,
+    plugins: {
+      legend: {
+        display: false,
+      },
+    },
+  };
+
   const data = useMemo(() => {
     return {
       datasets: [
@@ -72,7 +76,7 @@ export const LineChart = () => {
           backgroundColor: 'rgb(246, 106, 118)',
         },
       ],
-      labels,
+      labels: width < 1023 ? labelsMobile : labelsDesktop,
     };
   }, []);
 
