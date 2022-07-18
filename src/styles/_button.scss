@@ -8,8 +8,7 @@
     }
   }
 
-  &:hover,
-  &:focus {
+  &:hover {
     @apply bg-primary-red-300;
   }
 }

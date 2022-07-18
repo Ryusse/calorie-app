@@ -12,6 +12,7 @@ export default defineConfig({
       '@utils': path.resolve('./src/shared/utils'),
       '@hooks': path.resolve('./src/shared/hooks'),
       '@pages': path.resolve('./src/pages'),
+      '@services': path.resolve('./src/shared/services'),
     },
   },
 });

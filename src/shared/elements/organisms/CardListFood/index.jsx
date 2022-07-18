@@ -1,14 +1,32 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { Button } from '@elements/atoms';
 import Icon from '@elements/atoms/Icon';
 import { CardFood, Modal } from '@elements/molecules';
 import { ModalAddFood } from '@elements/organisms';
 
+import { useFoodService } from '../../../../services';
+
 export const CardListFood = () => {
   const [openModal, setOpenModal] = useState(false);
+  const [listFoods, setListFoods] = useState([]);
 
-  const handleAdd = () => {};
+  const { useGetFoods } = useFoodService();
+
+  const getListFoods = async () => {
+    try {
+      const foods = await useGetFoods();
+      setListFoods(foods);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  // const handleAdd = () => {};
+
+  useEffect(() => {
+    getListFoods();
+  }, []);
 
   return (
     <>
@@ -44,18 +62,10 @@ export const CardListFood = () => {
               Fecha
             </p>
           </div>
-          <CardFood />
-          <CardFood />
-          <CardFood />
-          <CardFood />
-          <CardFood />
-          <CardFood />
-          <CardFood />
-          <CardFood />
-          <CardFood />
-          <CardFood />
-          <CardFood />
-          <CardFood />
+
+          {listFoods &&
+            listFoods.length > 0 &&
+            listFoods.map((_) => <CardFood key={_.idAlimento} food={_} />)}
         </div>
       </div>
       <Modal

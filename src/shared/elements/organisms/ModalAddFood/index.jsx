@@ -58,7 +58,7 @@ export const ModalAddFood = () => {
               <Dropdown
                 {...field}
                 options={foodList}
-                label="Departamento:"
+                label="Tipo de comida:"
                 placeholder="Ingresar departamento..."
                 // className={errors.department ? 'form-control_error' : ''}
               />

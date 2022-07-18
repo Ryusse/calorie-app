@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Add from './icons/icAdd';
+import Arrow from './icons/icArrow';
 import Close from './icons/icClose';
 import Food from './icons/icFood';
 import Logo from './icons/icLogo';
@@ -19,6 +20,11 @@ const iconTypes = {
   icAdd: {
     component: Add,
     alt: 'Add',
+  },
+
+  icArrow: {
+    component: Arrow,
+    alt: 'Arrow',
   },
 
   icFood: {

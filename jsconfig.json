@@ -16,6 +16,9 @@
       ],
       "@pages/*": [
         "src/pages/*"
+      ],
+      "@services/*": [
+        "./src/shared/services/*"
       ]
     }
   }

@@ -1,4 +1,4 @@
-const icArrowRight = ({ className }) => {
+const icArrow = ({ className }) => {
   return (
     <svg
       className={className}
@@ -17,4 +17,4 @@ const icArrowRight = ({ className }) => {
   );
 };
 
-export default icArrowRight;
+export default icArrow;
