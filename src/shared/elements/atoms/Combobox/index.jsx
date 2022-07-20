@@ -23,7 +23,7 @@ export const Dropdown = forwardRef(
     const [selected, setSelected] = useState(options[0]);
     const [query, setQuery] = useState('');
 
-    const filteredFoods =
+    const filteredOptions =
       query === ''
         ? options
         : options.filter((option) =>
@@ -34,7 +34,7 @@ export const Dropdown = forwardRef(
           );
 
     return (
-      <div className={`!z-70 relative w-full `}>
+      <div ref={ref} className={`!z-70 relative w-full `}>
         {label && (
           <Label
             htmlFor={htmlFor}
@@ -44,7 +44,7 @@ export const Dropdown = forwardRef(
             classNameText={classNameLabel}
           />
         )}
-        <Combobox ref={ref} value={selected} onChange={setSelected}>
+        <Combobox value={selected} onChange={setSelected}>
           <div className="relative mt-1">
             <div className="relative">
               <Combobox.Input
@@ -67,23 +67,23 @@ export const Dropdown = forwardRef(
               leaveTo="opacity-0"
               afterLeave={() => setQuery('')}
             >
-              <Combobox.Options className="sm:text-sm max-h-30 absolute mt-1 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                {filteredFoods.length === 0 && query !== '' ? (
+              <Combobox.Options className="max-h-30 absolute z-20 mt-2 w-full overflow-y-auto rounded-md bg-primary-grey-900 shadow-01 ring-opacity-5 focus:outline-none">
+                {filteredOptions.length === 0 && query !== '' ? (
                   <div className="relative cursor-default select-none py-2 px-4 text-gray-700">
                     Nothing found.
                   </div>
                 ) : (
-                  filteredFoods.map((person) => (
+                  filteredOptions.map((option) => (
                     <Combobox.Option
-                      key={person.id}
+                      key={option.id}
                       className={({ active }) =>
-                        `relative cursor-pointer select-none py-2 pl-10 pr-4 ${
+                        `relative cursor-pointer select-none py-3 pl-10 pr-4 text-paragraph-01 ${
                           active
                             ? 'bg-primary-grey-800 text-white'
                             : 'text-gray-900'
                         }`
                       }
-                      value={person}
+                      value={option}
                     >
                       {({ selected, active }) => (
                         <>
@@ -92,7 +92,7 @@ export const Dropdown = forwardRef(
                               selected ? 'font-medium' : 'font-normal'
                             }`}
                           >
-                            {person.name}
+                            {option.name}
                           </span>
                         </>
                       )}

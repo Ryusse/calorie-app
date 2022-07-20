@@ -1,18 +1,21 @@
-import { Button, Dropdown, Input } from '@elements/atoms';
-import { Controller, useForm } from 'react-hook-form';
+import { Button, Input, Label } from '@elements/atoms';
+import { useForm } from 'react-hook-form';
 
 export const ModalAddFood = () => {
   const {
     register,
-    control,
+    setValue,
     handleSubmit,
     formState,
+    watch,
     getValues,
     formState: { errors },
   } = useForm({
     mode: 'onChange',
     reValidateMode: 'onChange',
   });
+
+  const watchFoodType = watch('foodType');
 
   const foodList = [
     { id: 1, name: 'Desayuno' },
@@ -22,10 +25,13 @@ export const ModalAddFood = () => {
 
   const onSubmit = async () => {
     console.log('execute');
-    const formData = new FormData();
-    formData.append('food', getValues('food'));
-    formData.append('password', getValues('password'));
+    // const formData = new FormData();
+    // formData.append('food', getValues('food'));
+    // formData.append('password', getValues('password'));
   };
+
+  console.log(watch('foodType'));
+
   return (
     <div>
       <h1 className="mb-8 text-center text-heading-04 font-bold">
@@ -37,7 +43,7 @@ export const ModalAddFood = () => {
             placeholder="Ingresa su comida"
             name="food"
             htmlFor="food"
-            label="Comida"
+            label="Comida:"
             type="text"
             className={`rounded-[10px] ${
               errors.food ? 'form-control_error' : ''
@@ -49,9 +55,9 @@ export const ModalAddFood = () => {
           )}
         </div>
 
-        <div className="form-group !z-30">
+        {/* } <div className="form-group !z-30">
           <Controller
-            name="food type"
+            name="foodType"
             control={control}
             rules={{ required: true }}
             render={({ field }) => (
@@ -64,6 +70,88 @@ export const ModalAddFood = () => {
               />
             )}
           />
+        </div> */}
+
+        <div className="form-group">
+          <Label label="Seleccione el tipo de comida:" />
+
+          <div
+            className={`mt-4 cursor-pointer rounded-[0.5rem] border py-2 px-4 ${
+              watchFoodType === 'Desayuno'
+                ? 'border-primary-red-100 bg-others-transparency-red-100'
+                : 'border-primary-grey-800'
+            }`}
+            onClick={() =>
+              setValue('foodType', 'Desayuno', { shouldValidate: false })
+            }
+          >
+            <Input
+              name="foodType"
+              htmlFor="foodType"
+              label="Desayuno"
+              type="radio"
+              valueInput="Desayuno"
+              classNameContainer="flex items-center gap-4 flex-row-reverse justify-end h-8"
+              className={`radio !w-4 w-4 cursor-pointer accent-primary-red-100 !shadow-none`}
+              classNameLabelContainer="!mb-0 "
+              classNameLabel="cursor-pointer"
+              {...register('foodType', {
+                required: true,
+              })}
+            />
+          </div>
+
+          <div
+            className={`mt-4 cursor-pointer rounded-[0.5rem] border py-2 px-4 ${
+              watchFoodType === 'Almuerzo'
+                ? 'border-primary-red-100 bg-others-transparency-red-100'
+                : 'border-primary-grey-800'
+            }`}
+            onClick={() =>
+              setValue('foodType', 'Almuerzo', { shouldValidate: false })
+            }
+          >
+            <Input
+              name="foodType"
+              htmlFor="foodType"
+              label="Almuerzo"
+              type="radio"
+              valueInput="Almuerzo"
+              classNameContainer="flex items-center gap-4 flex-row-reverse justify-end h-8"
+              className="radio !w-4 w-4 cursor-pointer accent-primary-red-100 !shadow-none"
+              classNameLabelContainer="!mb-0 "
+              classNameLabel="cursor-pointer"
+              {...register('foodType', {
+                required: true,
+              })}
+            />
+          </div>
+
+          <div
+            className={`mt-4 cursor-pointer rounded-[0.5rem] border py-2 px-4 ${
+              watchFoodType === 'Cena'
+                ? 'border-primary-red-100 bg-others-transparency-red-100'
+                : 'border-primary-grey-800'
+            }`}
+            onClick={() =>
+              setValue('foodType', 'Cena', { shouldValidate: false })
+            }
+          >
+            <Input
+              name="foodType"
+              htmlFor="foodType"
+              label="Cena"
+              type="radio"
+              valueInput="Cena"
+              classNameContainer="flex items-center gap-4 flex-row-reverse justify-end h-8"
+              className="radio !w-4 w-4 cursor-pointer accent-primary-red-100 !shadow-none"
+              classNameLabelContainer="!mb-0 "
+              classNameLabel="cursor-pointer"
+              {...register('foodType', {
+                required: true,
+              })}
+            />
+          </div>
         </div>
 
         <Button

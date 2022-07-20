@@ -34,7 +34,7 @@ export const Modal = ({ isOpen, onClose, children, className }) => {
                 <Dialog.Panel
                   className={`absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 overflow-y-auto rounded-[10px] rounded-b-[0] bg-primary-grey-900 shadow-xl transition-all md:rounded-b-[10px] ${className}`}
                 >
-                  <div className="sticky top-0 left-0 z-10 w-full border-b border-primary-grey-600 bg-primary-grey-900 p-6">
+                  <div className="sticky top-0 left-0 z-10 w-full border-b border-primary-grey-600 bg-primary-grey-900 p-6 lg:absolute lg:border-none lg:bg-transparent lg:py-7">
                     <button className="grid" onClick={onClose}>
                       <Icon
                         name="icClose"

@@ -29,6 +29,8 @@ export const Input = forwardRef(
     ref
   ) => {
     const [value, setValue] = useState(defaultValue);
+
+    console.log(htmlFor, name);
     return (
       <div className={`relative ${classNameContainer}`}>
         {label && (
@@ -36,8 +38,8 @@ export const Input = forwardRef(
             htmlFor={htmlFor}
             label={label}
             required={showRequiredLabel}
-            className={classNameLabelContainer}
-            classNameText={classNameLabel}
+            classNameLabelContainer={classNameLabelContainer}
+            classNameLabel={classNameLabel}
           />
         )}
         <input
