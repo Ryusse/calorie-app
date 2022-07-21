@@ -1,6 +1,8 @@
+import { useEffect, useState } from 'react';
 import { Button, Input } from '@elements/atoms';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
+import { useUserService } from '../../../../services';
 
 export const AuthLogin = () => {
   const {
@@ -13,13 +15,32 @@ export const AuthLogin = () => {
     mode: 'onChange',
     reValidateMode: 'onChange',
   });
+  const { useLogin } = useUserService();
+  const [items, setItems] = useState([]);
 
   const onSubmit = async () => {
     console.log('execute');
     const formData = new FormData();
     formData.append('userName', getValues('userName'));
     formData.append('password', getValues('password'));
+
+    try {
+      const respUser = await useLogin(getValues('userName'),getValues('password'));
+      console.log(respUser, 'user respons 2e');
+      setItems(respUser)
+      alert('Bienvenido ' + respUser.nombres)
+      if (typeof window !== 'undefined') {
+        window.location.href = "/Statistics";
+      }
+    } catch (e) {
+      console.log(e);
+    }
   };
+
+
+  useEffect(() => {
+    localStorage.setItem('items', JSON.stringify(items));
+  }, [items]);
   return (
     <div
       className="absolute top-1/2 left-1/2 flex h-full w-full -translate-y-1/2 -translate-x-1/2 flex-col gap-6 overflow-y-auto bg-others-transparency-white-900 p-6 md:h-auto md:w-[30rem] md:rounded-[1rem] md:p-9 landscape:block

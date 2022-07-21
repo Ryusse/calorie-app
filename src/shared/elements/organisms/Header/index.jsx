@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 
 import Icon from '@elements/atoms/Icon';
 import { MenuDashboardMobile } from '@elements/molecules';
@@ -8,10 +8,19 @@ import UserDefault from '../../../../assets/images/user-default.png';
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+  // const foto = ''
   const ref = useRef();
 
   useOutsideClick(ref, () => setIsMenuOpen(false));
+
+  const [items, setItems] = useState({nombres: 'jajaja'});
+
+  useEffect(() => {
+    const items = JSON.parse(localStorage.getItem('items'));
+    if (items) {
+    setItems(items);
+    }
+  }, []);
 
   return (
     <>
@@ -26,13 +35,13 @@ export const Header = () => {
         <div className="flex items-center gap-2 lg:hidden">
           <Icon name="icLogo" className="mt-3" />
           <p className="text-heading-04 font-semibold text-primary-red-200">
-            Food diary
+            Food diarys {items.nombres}
           </p>
         </div>
         <figure className="h-7 w-7">
           <img
             className="w-full object-cover"
-            src={UserDefault}
+            src={`${items.foto}`}
             alt="user profile"
           />
         </figure>
