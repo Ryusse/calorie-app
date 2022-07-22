@@ -27,7 +27,7 @@ ChartJS.register(
 
 // ChartJS.register(Tooltip, Title, ArcElement, Legend);
 
-export const LineChart = ({scores, labelsMobile, labelsDesktop}) => {
+export const LineChart = ({ scores, labelsMobile, labelsDesktop }) => {
   const { width } = useWindowDimensions();
 
   const options = {

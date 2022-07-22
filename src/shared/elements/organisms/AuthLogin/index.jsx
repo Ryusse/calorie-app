@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
+
 import { Button, Input } from '@elements/atoms';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
+
 import { useUserService } from '../../../../services';
 
 export const AuthLogin = () => {
@@ -25,18 +27,20 @@ export const AuthLogin = () => {
     formData.append('password', getValues('password'));
 
     try {
-      const respUser = await useLogin(getValues('userName'),getValues('password'));
+      const respUser = await useLogin(
+        getValues('userName'),
+        getValues('password')
+      );
       console.log(respUser, 'user respons 2e');
-      setItems(respUser)
-      alert('Bienvenido ' + respUser.nombres)
+      setItems(respUser);
+      alert('Bienvenido ' + respUser.nombres);
       if (typeof window !== 'undefined') {
-        window.location.href = "/Statistics";
+        window.location.href = '/Statistics';
       }
     } catch (e) {
       console.log(e);
     }
   };
-
 
   useEffect(() => {
     localStorage.setItem('items', JSON.stringify(items));

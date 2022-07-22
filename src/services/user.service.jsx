@@ -5,7 +5,7 @@ export const useUserService = () => {
     return await axiosClient
       .post('login', {
         usuario: user,
-        contraseña: pwd
+        contraseña: pwd,
       })
       .then((response) => response.data);
   };

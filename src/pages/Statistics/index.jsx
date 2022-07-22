@@ -1,19 +1,17 @@
-import { useRef, useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import { LayoutIntern } from '@components/LayoutIntern';
 import { LineChart } from '@elements/molecules';
 import { GridWrapper, Header, Sidebar } from '@elements/organisms';
+
 import { useReportService } from '../../services';
 
 export const Statistics = () => {
-
   const { useGetReport } = useReportService();
 
-  const [items, setItems] = useState({nombres: 'Marco'});
+  const [items, setItems] = useState({ nombres: 'Marco' });
 
   const [count, setCount] = useState(0);
-
-  
 
   const [scores, setScores] = useState([]);
 
@@ -23,29 +21,28 @@ export const Statistics = () => {
   const getData = async () => {
     try {
       const respUser = await useGetReport(items.idUsuario);
-      let days= []
-      let data = []
+      const days = [];
+      const data = [];
       console.log(respUser, 'reports respons 2e');
       for (let i = 0; i < respUser.length; i++) {
         const element = respUser[i];
-        days.push(element.dia + '-' + element.mes + '-' + element.año)
-        data.push(element.porcentaje)
+        days.push(element.dia + '-' + element.mes + '-' + element.año);
+        data.push(element.porcentaje);
       }
-      setScores(data)
-      setLabelsDesktop(days)
-      setLabelsMobile(days)
-      setCount(days.length)
+      setScores(data);
+      setLabelsDesktop(days);
+      setLabelsMobile(days);
+      setCount(days.length);
     } catch (e) {
       console.log(e);
     }
-  }
+  };
 
   useEffect(() => {
     const items = JSON.parse(localStorage.getItem('items'));
     if (items) {
-    setItems(items);
-    getData();
-
+      setItems(items);
+      getData();
     }
   }, []);
 
@@ -56,7 +53,9 @@ export const Statistics = () => {
         <Header />
         <LayoutIntern>
           <div>
-            <h1 className="text-heading-01 font-semibold">Hola, {items.nombres}.</h1>
+            <h1 className="text-heading-01 font-semibold">
+              Hola, {items.nombres}.
+            </h1>
             <p className="mt-1 font-medium text-primary-grey-300">
               Aqui encontrarás tus estadisticas de calorias diarias.
             </p>
@@ -66,8 +65,13 @@ export const Statistics = () => {
             <h2 className="mb-9 text-heading-03 font-semibold">
               Calorias consumidas
             </h2>
-            {count && <LineChart labelsMobile={labelsMobile} labelsDesktop={labelsDesktop} scores={scores}/>}
-            
+            {count && (
+              <LineChart
+                labelsMobile={labelsMobile}
+                labelsDesktop={labelsDesktop}
+                scores={scores}
+              />
+            )}
           </div>
         </LayoutIntern>
       </GridWrapper>

@@ -1,10 +1,8 @@
-import { useRef, useState, useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import Icon from '@elements/atoms/Icon';
 import { MenuDashboardMobile } from '@elements/molecules';
 import { useOutsideClick } from '@hooks/useOutsideClick';
-
-import UserDefault from '../../../../assets/images/user-default.png';
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -13,12 +11,12 @@ export const Header = () => {
 
   useOutsideClick(ref, () => setIsMenuOpen(false));
 
-  const [items, setItems] = useState({nombres: 'jajaja'});
+  const [items, setItems] = useState({ nombres: 'jajaja' });
 
   useEffect(() => {
     const items = JSON.parse(localStorage.getItem('items'));
     if (items) {
-    setItems(items);
+      setItems(items);
     }
   }, []);
 
