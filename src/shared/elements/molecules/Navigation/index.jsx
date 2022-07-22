@@ -19,7 +19,7 @@ export const Navigation = ({ onClose }) => {
             >
               <NavLink
                 className="nav-link flex items-center gap-3 py-3 px-4 text-paragraph-02 font-medium text-primary-grey-500 after:absolute after:left-0 after:hidden after:h-full after:w-[2.5px] after:rounded-[10px] after:bg-primary-red-300 after:content-['']"
-                to="/statistics"
+                to="/"
               >
                 <Icon
                   name="icStatistics"

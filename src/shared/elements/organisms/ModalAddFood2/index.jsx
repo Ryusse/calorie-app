@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
+
 import { Button, Dropdown, Input, Label } from '@elements/atoms';
 import { Controller, useForm } from 'react-hook-form';
+
 import { useFoodService } from '../../../../services';
 
 export const ModalAddFood2 = () => {
@@ -25,11 +27,11 @@ export const ModalAddFood2 = () => {
   const getListFoods = async () => {
     try {
       const foods = await useGetFoods();
-      const listTemp = []
+      const listTemp = [];
       for (let i = 0; i < foods.length; i++) {
         listTemp.push({ id: foods[i].idAlimento, name: foods[i].nombres });
       }
-      console.log(listTemp)
+      console.log(listTemp);
       setListFoods(listTemp);
     } catch (e) {
       console.log(e);
@@ -49,9 +51,9 @@ export const ModalAddFood2 = () => {
     // const formData = new FormData();
     // formData.append('foodId');
     // formData.append('foodType');
-    console.log(getValues('foodType'))
-    console.log(getValues('foodId'))
-    console.log(getValues('foodId2'))
+    console.log(getValues('foodType'));
+    console.log(getValues('foodId'));
+    console.log(getValues('foodId2'));
     // const formData = new FormData();
     // formData.append('food', getValues('food'));
     // formData.append('password', getValues('password'));

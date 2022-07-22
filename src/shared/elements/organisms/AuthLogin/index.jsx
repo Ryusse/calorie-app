@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 import { Button, Input } from '@elements/atoms';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { useUserService } from '../../../../services';
 
@@ -20,31 +20,27 @@ export const AuthLogin = () => {
   const { useLogin } = useUserService();
   const [userInfo, setUserInfo] = useState([]);
 
-  const onSubmit = async () => {
-    console.log('execute');
-    const formData = new FormData();
-    formData.append('userName', getValues('userName'));
-    formData.append('password', getValues('password'));
+  const navigate = useNavigate();
 
+  const onSubmit = async () => {
     try {
       const respUser = await useLogin(
         getValues('userName'),
         getValues('password')
       );
-      console.log(respUser, 'user respons 2e');
+
       setUserInfo(respUser);
-      alert('Bienvenido ' + respUser.nombres);
-      if (typeof window !== 'undefined') {
-        window.location.href = '/Statistics';
-      }
     } catch (e) {
       console.log(e);
+    } finally {
+      navigate('/');
     }
   };
 
   useEffect(() => {
     localStorage.setItem('userInfo', JSON.stringify(userInfo));
   }, [userInfo]);
+
   return (
     <div
       className="absolute top-1/2 left-1/2 flex h-full w-full -translate-y-1/2 -translate-x-1/2 flex-col gap-6 overflow-y-auto bg-others-transparency-white-900 p-6 md:h-auto md:w-[30rem] md:rounded-[1rem] md:p-9 landscape:block
@@ -104,14 +100,14 @@ export const AuthLogin = () => {
         </Button>
       </form>
 
-      <div className="mt-auto w-full text-center md:mt-4 landscape:mt-10">
+      {/* <div className="mt-auto w-full text-center md:mt-4 landscape:mt-10">
         <p className="text-paragraph-03 font-semibold">
           ¿Aún no tienes una cuenta?,
           <Link className="text-primary-red-300" to="/register">
             Regístrate.
           </Link>
         </p>
-      </div>
+      </div> */}
     </div>
   );
 };

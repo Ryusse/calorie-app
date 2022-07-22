@@ -71,10 +71,15 @@ export const Statistics = () => {
             <h2 className="mb-9 text-heading-03 font-semibold">
               Calorias consumidas
             </h2>
-            {count && <LineChart labelsMobile={labelsMobile} labelsDesktop={labelsDesktop} scores={scores}/>}
-            
+            {count && (
+              <LineChart
+                labelsMobile={labelsMobile}
+                labelsDesktop={labelsDesktop}
+                scores={scores}
+              />
+            )}
           </div>
-          
+
           <div className="relative mt-12">
             <div className="mb-4 flex justify-between lg:mb-10">
               <h1 className="text-heading-01 font-semibold">Comidas</h1>
@@ -102,7 +107,6 @@ export const Statistics = () => {
             >
               <ModalAddFood2 />
             </CardListMeal>
-
           </div>
         </LayoutIntern>
       </GridWrapper>

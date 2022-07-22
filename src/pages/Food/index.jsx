@@ -14,11 +14,11 @@ import {
 export const Food = () => {
   const [openModal, setOpenModal] = useState(false);
 
-  const onSubmit = ({food, calories}) => {
-    //guardar los datos en la api
-    //cerrar el modal
-    setOpenModal(false)
-  }
+  const onSubmit = ({ food, calories }) => {
+    // guardar los datos en la api
+    // cerrar el modal
+    setOpenModal(false);
+  };
 
   return (
     <>
@@ -49,7 +49,7 @@ export const Food = () => {
             openModal={openModal}
             onClose={() => setOpenModal(false)}
           >
-            <ModalAddFood  onSubmit={onSubmit} />
+            <ModalAddFood onSubmit={onSubmit} />
           </CardListFood>
         </LayoutIntern>
       </GridWrapper>
