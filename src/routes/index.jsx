@@ -1,9 +1,9 @@
-// import { Home } from '@pages/Home'
-
-import { Food, Register, Statistics } from '@pages/';
+import { Food } from '@pages/Food';
 import { Home } from '@pages/Home';
 import { Login } from '@pages/Login';
 import { Profile } from '@pages/Profile';
+import { Register } from '@pages/Register';
+import { Statistics } from '@pages/Statistics';
 import { Navigate, Route, Routes } from 'react-router-dom';
 
 export const RoutesIndex = () => {

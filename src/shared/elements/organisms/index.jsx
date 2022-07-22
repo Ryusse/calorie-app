@@ -1,7 +1,6 @@
 export * from './AuthLogin';
 export * from './AuthRegister';
 export * from './CardListFood';
-export * from './CardListFood2';
 export * from './CustomProfile';
 export * from './GridWrapper';
 export * from './Header';

@@ -1,14 +1,11 @@
 import { useEffect, useState } from 'react';
 
-import { Button } from '@elements/atoms';
-import Icon from '@elements/atoms/Icon';
 import { CardFood, Modal } from '@elements/molecules';
 import { ModalAddFood } from '@elements/organisms';
 
 import { useFoodService } from '../../../../services';
 
-export const CardListFood = () => {
-  const [openModal, setOpenModal] = useState(false);
+export const CardListFood = ({ openModal, onClose }) => {
   const [listFoods, setListFoods] = useState([]);
 
   const { useGetFoods } = useFoodService();
@@ -31,22 +28,6 @@ export const CardListFood = () => {
   return (
     <>
       <div>
-        <Button
-          onClick={() => setOpenModal(!openModal)}
-          classButton="primary"
-          className="absolute top-8 right-8 hidden !max-w-[10rem] lg:block"
-        >
-          Añadir
-        </Button>
-
-        <Button
-          onClick={() => setOpenModal(!openModal)}
-          classButton="rounded"
-          className="fixed bottom-5 right-5 lg:hidden"
-        >
-          <Icon name="icAdd" className="h-5 w-5" />
-        </Button>
-
         <div className="flex flex-col gap-5">
           <div className="hidden grid-cols-[1fr_6rem_6rem_7.5rem] gap-[3vw] rounded-[5px] bg-primary-grey-500 py-3 px-4 text-center shadow-01 md:grid xl:gap-[2rem]">
             <p className=" text-left  text-paragraph-01 font-medium text-primary-grey-900">
@@ -71,7 +52,7 @@ export const CardListFood = () => {
       <Modal
         title="Ingrese su comida"
         isOpen={openModal}
-        onClose={() => setOpenModal(false)}
+        onClose={onClose}
         className="!top-[10%] h-[90%] w-full translate-y-[0] md:!top-1/2 md:!h-auto md:w-[25rem] md:-translate-y-1/2"
       >
         <ModalAddFood />

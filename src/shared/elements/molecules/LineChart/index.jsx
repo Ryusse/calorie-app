@@ -27,20 +27,8 @@ ChartJS.register(
 
 // ChartJS.register(Tooltip, Title, ArcElement, Legend);
 
-export const LineChart = () => {
+export const LineChart = ({ scores, labelsMobile, labelsDesktop }) => {
   const { width } = useWindowDimensions();
-
-  const scores = [80, 25, 50, 100, 150, 200, 20];
-  const labelsMobile = ['L', 'M', 'M', 'J', 'V', 'S', 'D'];
-  const labelsDesktop = [
-    'Lunes',
-    'Martes',
-    'Miércoles',
-    'Jueves',
-    'Viernes',
-    'Sábado',
-    'Domingo',
-  ];
 
   const options = {
     fill: true,
