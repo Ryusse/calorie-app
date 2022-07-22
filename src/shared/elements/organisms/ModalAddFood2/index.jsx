@@ -1,9 +1,13 @@
-import { useEffect, useState } from 'react';
+import { useEffect, Fragment, useState } from 'react';
 import { Button, Dropdown, Input, Label } from '@elements/atoms';
 import { Controller, useForm } from 'react-hook-form';
 import { useFoodService } from '../../../../services';
+// import { forwardRef, Fragment, useState } from 'react';
 
-export const ModalAddFood2 = () => {
+import Icon from '@elements/atoms/Icon';
+import { Combobox, Transition } from '@headlessui/react';
+
+export const ModalAddFood2 = ({ onSubmit }) => {
   const {
     register,
     setValue,
@@ -18,7 +22,7 @@ export const ModalAddFood2 = () => {
     reValidateMode: 'onChange',
   });
 
-  const [listFoods, setListFoods] = useState([{ id: 1, name: 'Desayuno' }]);
+  const [options, setOptions] = useState([{ id: 0, name: '' }]);
 
   const { useGetFoods } = useFoodService();
 
@@ -30,11 +34,15 @@ export const ModalAddFood2 = () => {
         listTemp.push({ id: foods[i].idAlimento, name: foods[i].nombres });
       }
       console.log(listTemp)
-      setListFoods(listTemp);
+      setOptions(listTemp);
     } catch (e) {
       console.log(e);
     }
   };
+
+  const handleSubmitEvent = () => {
+    onSubmit(getValues('foodType'),selected)
+  }
 
   const watchFoodType = watch('foodType');
 
@@ -44,28 +52,45 @@ export const ModalAddFood2 = () => {
     { id: 3, name: 'Cena' },
   ];
 
-  const onSubmit = async () => {
-    console.log('execute');
-    // const formData = new FormData();
-    // formData.append('foodId');
-    // formData.append('foodType');
-    console.log(getValues('foodType'))
-    console.log(getValues('foodId'))
-    console.log(getValues('foodId2'))
-    // const formData = new FormData();
-    // formData.append('food', getValues('food'));
-    // formData.append('password', getValues('password'));
-  };
+  // const onSubmit = async () => {
+  //   console.log('execute');
+  //   // const formData = new FormData();
+  //   // formData.append('foodId');
+  //   // formData.append('foodType');
+  //   console.log(getValues('foodType'))
+  //   console.log(selected,'seleccionado')
+  //   // const formData = new FormData();
+  //   // formData.append('food', getValues('food'));
+  //   // formData.append('password', getValues('password'));
+  // };
 
   useEffect(() => {
     getListFoods();
   }, []);
 
+  const [selected, setSelected] = useState(options[0]);
+  const [query, setQuery] = useState('');
+
+  const setSelectedTemp = (param) => {
+    setSelected(param)
+    console.log(selected, 'cambiando selectd')
+  }
+
+  const filteredOptions =
+    query === ''
+      ? options
+      : options.filter((option) =>
+          option.name
+            .toLowerCase()
+            .replace(/\s+/g, '')
+            .includes(query.toLowerCase().replace(/\s+/g, ''))
+        );
+
   return (
     <div>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(handleSubmitEvent)}>
         <div className="form-group !z-30">
-          <Controller
+          {/* <Controller
             name="foodId"
             control={control}
             render={({ field }) => (
@@ -78,7 +103,72 @@ export const ModalAddFood2 = () => {
                 // className={errors.department ? 'form-control_error' : ''}
               />
             )}
+          /> */}
+      <div className={`!z-70 relative w-full `}>
+          <Label
+            // htmlFor={htmlFor}
+            label="Tipo de comida:"
+            // required={showRequiredLabel}
+            // className={classNameLabelContainer}
+            // classNameText={classNameLabel}
           />
+        <Combobox value={selected} onChange={setSelectedTemp}>
+          <div className="relative mt-1">
+            <div className="relative">
+              <Combobox.Input
+                className={`input-lg w-full border border-primary-grey-100 text-paragraph-02 outline-none placeholder:text-paragraph-03 placeholder:text-placeholder focus:shadow-01 0.5rem 
+                          `}
+                displayValue={(option) => option.name}
+                onChange={(event) => setQuery(event.target.value)}
+              />
+              <Combobox.Button className="absolute inset-y-0 right-0 flex items-center pr-2">
+                <Icon name="icArrow" className="rotate-90" />
+              </Combobox.Button>
+            </div>
+            <Transition
+              as={Fragment}
+              leave="transition ease-in duration-100"
+              leaveFrom="opacity-100"
+              leaveTo="opacity-0"
+              afterLeave={() => setQuery('')}
+            >
+              <Combobox.Options className="max-h-30 absolute z-20 mt-2 w-full overflow-y-auto rounded-md bg-primary-grey-900 shadow-01 ring-opacity-5 focus:outline-none">
+                {filteredOptions.length === 0 && query !== '' ? (
+                  <div className="relative cursor-default select-none py-2 px-4 text-gray-700">
+                    Nothing found.
+                  </div>
+                ) : (
+                  filteredOptions.map((option) => (
+                    <Combobox.Option
+                      key={option.id}
+                      className={({ active }) =>
+                        `relative cursor-pointer select-none py-3 pl-10 pr-4 text-paragraph-01 ${
+                          active
+                            ? 'bg-primary-grey-800 text-white'
+                            : 'text-gray-900'
+                        }`
+                      }
+                      value={option}
+                    >
+                      {({ selected, active }) => (
+                        <>
+                          <span
+                            className={`block truncate ${
+                              selected ? 'font-medium' : 'font-normal'
+                            }`}
+                          >
+                            {option.name}
+                          </span>
+                        </>
+                      )}
+                    </Combobox.Option>
+                  ))
+                )}
+              </Combobox.Options>
+            </Transition>
+          </div>
+        </Combobox>
+      </div>
         </div>
 
         <div className="form-group">

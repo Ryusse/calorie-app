@@ -16,12 +16,19 @@ export const Dropdown = forwardRef(
       htmlFor,
       options,
       disabled,
+      selected1,
       borderRadius = '0.5rem',
     },
     ref
   ) => {
+
     const [selected, setSelected] = useState(options[0]);
     const [query, setQuery] = useState('');
+
+    const setSelectedTemp = (param) => {
+      setSelected(param)
+      console.log(selected, 'cambiando selectd')
+    }
 
     const filteredOptions =
       query === ''
@@ -44,7 +51,7 @@ export const Dropdown = forwardRef(
             classNameText={classNameLabel}
           />
         )}
-        <Combobox value={selected} onChange={setSelected}>
+        <Combobox value={selected} onChange={setSelectedTemp}>
           <div className="relative mt-1">
             <div className="relative">
               <Combobox.Input
@@ -92,7 +99,7 @@ export const Dropdown = forwardRef(
                               selected ? 'font-medium' : 'font-normal'
                             }`}
                           >
-                            {option.name}
+                            {option.name}-{selected}
                           </span>
                         </>
                       )}
