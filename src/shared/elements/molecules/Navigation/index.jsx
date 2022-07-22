@@ -19,7 +19,7 @@ export const Navigation = ({ onClose }) => {
             >
               <NavLink
                 className="nav-link flex items-center gap-3 py-3 px-4 text-paragraph-02 font-medium text-primary-grey-500 after:absolute after:left-0 after:hidden after:h-full after:w-[2.5px] after:rounded-[10px] after:bg-primary-red-300 after:content-['']"
-                to="/Statistics"
+                to="/statistics"
               >
                 <Icon
                   name="icStatistics"
@@ -35,7 +35,7 @@ export const Navigation = ({ onClose }) => {
             >
               <NavLink
                 className="nav-link flex items-center gap-3 py-3 px-4 text-paragraph-02 font-medium text-primary-grey-500 after:absolute after:left-0 after:hidden after:h-full after:w-[2.5px] after:rounded-[10px] after:bg-primary-red-300 after:content-['']"
-                to="/Food"
+                to="/food"
               >
                 <Icon
                   name="icFood"
@@ -47,7 +47,7 @@ export const Navigation = ({ onClose }) => {
           </ul>
         </nav>
       </div>
-      <div className="border-t border-primary-grey-600 py-5">
+      {/* <div className="border-t border-primary-grey-600 py-5">
         <p className="text-paragraph-03 text-primary-grey-500 lg:text-paragraph-02">
           Preferencias
         </p>
@@ -66,7 +66,7 @@ export const Navigation = ({ onClose }) => {
               </NavLink>
             </li>
 
-            <li
+             <li
               onClick={() => (width < 1023 ? onClose() : null)}
               className="relative"
             >
@@ -83,7 +83,7 @@ export const Navigation = ({ onClose }) => {
             </li>
           </ul>
         </nav>
-      </div>
+      </div> */}
 
       <div className="mt-auto cursor-pointer border-t border-primary-grey-600 pt-5">
         <nav className="">

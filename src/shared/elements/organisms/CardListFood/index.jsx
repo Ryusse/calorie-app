@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react';
 
 import { CardFood, Modal } from '@elements/molecules';
-import { ModalAddFood } from '@elements/organisms';
 
 import { useFoodService } from '../../../../services';
 
-export const CardListFood = ({ openModal, onClose }) => {
+export const CardListFood = ({ openModal, onClose, children }) => {
   const [listFoods, setListFoods] = useState([]);
 
   const { useGetFoods } = useFoodService();
@@ -55,7 +54,7 @@ export const CardListFood = ({ openModal, onClose }) => {
         onClose={onClose}
         className="!top-[10%] h-[90%] w-full translate-y-[0] md:!top-1/2 md:!h-auto md:w-[25rem] md:-translate-y-1/2"
       >
-        <ModalAddFood />
+        {children}
       </Modal>
     </>
   );

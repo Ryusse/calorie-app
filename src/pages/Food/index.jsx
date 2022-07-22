@@ -7,6 +7,7 @@ import {
   CardListFood,
   GridWrapper,
   Header,
+  ModalAddFood,
   Sidebar,
 } from '@elements/organisms';
 
@@ -41,7 +42,9 @@ export const Food = () => {
           <CardListFood
             openModal={openModal}
             onClose={() => setOpenModal(false)}
-          />
+          >
+            <ModalAddFood />
+          </CardListFood>
         </LayoutIntern>
       </GridWrapper>
     </>

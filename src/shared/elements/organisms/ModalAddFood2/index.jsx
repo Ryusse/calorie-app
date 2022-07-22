@@ -1,5 +1,5 @@
-import { Button, Input, Label } from '@elements/atoms';
-import { useForm } from 'react-hook-form';
+import { Button, Dropdown, Input, Label } from '@elements/atoms';
+import { Controller, useForm } from 'react-hook-form';
 
 export const ModalAddFood2 = () => {
   const {
@@ -8,6 +8,7 @@ export const ModalAddFood2 = () => {
     handleSubmit,
     formState,
     watch,
+    control,
     formState: { errors },
   } = useForm({
     mode: 'onChange',
@@ -35,24 +36,7 @@ export const ModalAddFood2 = () => {
   return (
     <div>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="form-group">
-          <Input
-            placeholder="Ingresa su comida"
-            name="food"
-            htmlFor="food"
-            label="Comida:"
-            type="text"
-            className={`rounded-[10px] ${
-              errors.food ? 'form-control_error' : ''
-            }`}
-            {...register('food', { required: true })}
-          />
-          {errors.food && errors.food.type === 'required' && (
-            <p className="form-error">Campo obligatorio.</p>
-          )}
-        </div>
-
-        {/* } <div className="form-group !z-30">
+        <div className="form-group !z-30">
           <Controller
             name="foodType"
             control={control}
@@ -62,12 +46,12 @@ export const ModalAddFood2 = () => {
                 {...field}
                 options={foodList}
                 label="Tipo de comida:"
-                placeholder="Ingresar departamento..."
+                placeholder="Seleccione su comida..."
                 // className={errors.department ? 'form-control_error' : ''}
               />
             )}
           />
-        </div> */}
+        </div>
 
         <div className="form-group">
           <Label label="Seleccione el tipo de comida:" />

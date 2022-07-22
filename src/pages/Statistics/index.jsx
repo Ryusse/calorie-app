@@ -8,6 +8,7 @@ import {
   CardListFood,
   GridWrapper,
   Header,
+  ModalAddFood2,
   Sidebar,
 } from '@elements/organisms';
 
@@ -96,7 +97,9 @@ export const Statistics = () => {
             <CardListFood
               openModal={openModal}
               onClose={() => setOpenModal(false)}
-            />
+            >
+              <ModalAddFood2 />
+            </CardListFood>
             {count && (
               <LineChart
                 labelsMobile={labelsMobile}

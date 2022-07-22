@@ -4,6 +4,8 @@ import Icon from '@elements/atoms/Icon';
 import { MenuDashboardMobile } from '@elements/molecules';
 import { useOutsideClick } from '@hooks/useOutsideClick';
 
+import UserDefault from '../../../../assets/images/user-default.png';
+
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   // const foto = ''
@@ -33,13 +35,13 @@ export const Header = () => {
         <div className="flex items-center gap-2 lg:hidden">
           <Icon name="icLogo" className="mt-3" />
           <p className="text-heading-04 font-semibold text-primary-red-200">
-            Food diarys {items.nombres}
+            Food diarys
           </p>
         </div>
-        <figure className="h-7 w-7">
+        <figure className="h-9 w-9">
           <img
             className="w-full object-cover"
-            src={`${items.foto}`}
+            src={items.foto ? items.foto : UserDefault}
             alt="user profile"
           />
         </figure>
