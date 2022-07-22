@@ -1,6 +1,11 @@
 import { LayoutIntern } from '@components/LayoutIntern';
 import { LineChart } from '@elements/molecules';
-import { GridWrapper, Header, Sidebar } from '@elements/organisms';
+import {
+  CardListFood,
+  GridWrapper,
+  Header,
+  Sidebar,
+} from '@elements/organisms';
 
 export const Statistics = () => {
   return (
@@ -11,7 +16,7 @@ export const Statistics = () => {
         <LayoutIntern>
           <div>
             <h1 className="text-heading-01 font-semibold">Hola, Marco.</h1>
-            <p className="mt-1 font-medium text-primary-grey-300">
+            <p className="mt-1 font-medium text-primary-grey-500">
               Aqui encontrarás tus estadisticas de calorias diarias.
             </p>
           </div>
@@ -21,6 +26,12 @@ export const Statistics = () => {
               Calorias consumidas
             </h2>
             <LineChart />
+          </div>
+          <div className="relative mt-12">
+            <h1 className="mb-4 text-heading-01 font-semibold lg:mb-10">
+              Alimentos
+            </h1>
+            <CardListFood />
           </div>
         </LayoutIntern>
       </GridWrapper>

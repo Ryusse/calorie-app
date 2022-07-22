@@ -30,7 +30,6 @@ export const Input = forwardRef(
   ) => {
     const [value, setValue] = useState(defaultValue);
 
-    console.log(htmlFor, name);
     return (
       <div className={`relative ${classNameContainer}`}>
         {label && (

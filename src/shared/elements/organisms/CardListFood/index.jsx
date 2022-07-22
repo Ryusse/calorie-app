@@ -48,7 +48,7 @@ export const CardListFood = () => {
         </Button>
 
         <div className="flex flex-col gap-5">
-          <div className="hidden grid-cols-[1fr_6rem_6rem_7.5rem] gap-[3vw] rounded-[5px] bg-primary-grey-300 py-3 px-4 text-center shadow-01 md:grid xl:gap-[2rem]">
+          <div className="hidden grid-cols-[1fr_6rem_6rem_7.5rem] gap-[3vw] rounded-[5px] bg-primary-grey-500 py-3 px-4 text-center shadow-01 md:grid xl:gap-[2rem]">
             <p className=" text-left  text-paragraph-01 font-medium text-primary-grey-900">
               Nombre de comida
             </p>
@@ -69,6 +69,7 @@ export const CardListFood = () => {
         </div>
       </div>
       <Modal
+        title="Ingrese su comida"
         isOpen={openModal}
         onClose={() => setOpenModal(false)}
         className="!top-[10%] h-[90%] w-full translate-y-[0] md:!top-1/2 md:!h-auto md:w-[25rem] md:-translate-y-1/2"

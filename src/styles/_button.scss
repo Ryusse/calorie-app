@@ -1,6 +1,6 @@
 
 .button-primary {
-  @apply bg-primary-red-200  text-primary-grey-900 font-semibold transition-all ease-in-out;
+  @apply bg-primary-red-200 text-primary-grey-900 font-semibold transition-all duration-200 ease-in-out;
   &:disabled {
     @apply bg-disabled  cursor-default;
     &:hover {

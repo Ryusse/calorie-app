@@ -1,7 +1,7 @@
 import { Button, Input, Label } from '@elements/atoms';
 import { useForm } from 'react-hook-form';
 
-export const ModalAddFood = () => {
+export const ModalAddFood2 = () => {
   const {
     register,
     setValue,
