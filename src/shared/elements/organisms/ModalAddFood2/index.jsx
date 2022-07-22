@@ -1,11 +1,14 @@
+import { useEffect, useState } from 'react';
 import { Button, Dropdown, Input, Label } from '@elements/atoms';
 import { Controller, useForm } from 'react-hook-form';
+import { useFoodService } from '../../../../services';
 
 export const ModalAddFood2 = () => {
   const {
     register,
     setValue,
     handleSubmit,
+    getValues,
     formState,
     watch,
     control,
@@ -14,6 +17,24 @@ export const ModalAddFood2 = () => {
     mode: 'onChange',
     reValidateMode: 'onChange',
   });
+
+  const [listFoods, setListFoods] = useState([{ id: 1, name: 'Desayuno' }]);
+
+  const { useGetFoods } = useFoodService();
+
+  const getListFoods = async () => {
+    try {
+      const foods = await useGetFoods();
+      const listTemp = []
+      for (let i = 0; i < foods.length; i++) {
+        listTemp.push({ id: foods[i].idAlimento, name: foods[i].nombres });
+      }
+      console.log(listTemp)
+      setListFoods(listTemp);
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   const watchFoodType = watch('foodType');
 
@@ -25,26 +46,33 @@ export const ModalAddFood2 = () => {
 
   const onSubmit = async () => {
     console.log('execute');
-    const formData = new FormData();
-    formData.append('foodType');
-
+    // const formData = new FormData();
+    // formData.append('foodId');
+    // formData.append('foodType');
+    console.log(getValues('foodType'))
+    console.log(getValues('foodId'))
+    console.log(getValues('foodId2'))
     // const formData = new FormData();
     // formData.append('food', getValues('food'));
     // formData.append('password', getValues('password'));
   };
+
+  useEffect(() => {
+    getListFoods();
+  }, []);
 
   return (
     <div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="form-group !z-30">
           <Controller
-            name="foodType"
+            name="foodId"
             control={control}
-            rules={{ required: true }}
             render={({ field }) => (
               <Dropdown
+                name="foodId2"
                 {...field}
-                options={foodList}
+                options={listFoods}
                 label="Tipo de comida:"
                 placeholder="Seleccione su comida..."
                 // className={errors.department ? 'form-control_error' : ''}
@@ -78,9 +106,7 @@ export const ModalAddFood2 = () => {
               classNameLabel={`cursor-pointer text-placeholder font-normal ${
                 watchFoodType === 'Desayuno' ? 'text-primary-lightBlue-100' : ''
               }`}
-              {...register('foodType', {
-                required: true,
-              })}
+              {...register('foodType')}
             />
           </div>
 
@@ -106,9 +132,7 @@ export const ModalAddFood2 = () => {
               classNameLabel={`cursor-pointer text-placeholder font-normal ${
                 watchFoodType === 'Almuerzo' ? 'text-primary-lightBlue-100' : ''
               }`}
-              {...register('foodType', {
-                required: true,
-              })}
+              {...register('foodType')}
             />
           </div>
 
@@ -134,15 +158,13 @@ export const ModalAddFood2 = () => {
               classNameLabel={`cursor-pointer text-placeholder font-normal ${
                 watchFoodType === 'Cena' ? 'text-primary-lightBlue-100' : ''
               }`}
-              {...register('foodType', {
-                required: true,
-              })}
+              {...register('foodType')}
             />
           </div>
         </div>
 
         <Button
-          disabled={!formState.isValid}
+          // disabled={!formState.isValid}
           classButton="primary"
           className="mt-4"
           type=""

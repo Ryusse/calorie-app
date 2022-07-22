@@ -7,9 +7,12 @@ export const useFoodService = () => {
       .then((response) => response.data);
   };
 
-  const useCreateFood = async () => {
+  const useCreateFood = async (name, calories) => {
     return await axiosClient
-      .post('alimento/registrar')
+      .post('alimento/registrar',{
+        "nombre": name,
+        "calorias": calories
+      })
       .then((response) => response.data);
   };
 

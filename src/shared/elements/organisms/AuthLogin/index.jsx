@@ -18,7 +18,7 @@ export const AuthLogin = () => {
     reValidateMode: 'onChange',
   });
   const { useLogin } = useUserService();
-  const [items, setItems] = useState([]);
+  const [userInfo, setUserInfo] = useState([]);
 
   const onSubmit = async () => {
     console.log('execute');
@@ -32,7 +32,7 @@ export const AuthLogin = () => {
         getValues('password')
       );
       console.log(respUser, 'user respons 2e');
-      setItems(respUser);
+      setUserInfo(respUser);
       alert('Bienvenido ' + respUser.nombres);
       if (typeof window !== 'undefined') {
         window.location.href = '/Statistics';
@@ -43,8 +43,8 @@ export const AuthLogin = () => {
   };
 
   useEffect(() => {
-    localStorage.setItem('items', JSON.stringify(items));
-  }, [items]);
+    localStorage.setItem('userInfo', JSON.stringify(userInfo));
+  }, [userInfo]);
   return (
     <div
       className="absolute top-1/2 left-1/2 flex h-full w-full -translate-y-1/2 -translate-x-1/2 flex-col gap-6 overflow-y-auto bg-others-transparency-white-900 p-6 md:h-auto md:w-[30rem] md:rounded-[1rem] md:p-9 landscape:block

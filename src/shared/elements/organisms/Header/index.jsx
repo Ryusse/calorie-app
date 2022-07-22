@@ -13,12 +13,12 @@ export const Header = () => {
 
   useOutsideClick(ref, () => setIsMenuOpen(false));
 
-  const [items, setItems] = useState({ nombres: 'jajaja' });
+  const [userInfo, setUserInfo] = useState({ nombres: 'jajaja' });
 
   useEffect(() => {
-    const items = JSON.parse(localStorage.getItem('items'));
-    if (items) {
-      setItems(items);
+    const userInfo = JSON.parse(localStorage.getItem('userInfo'));
+    if (userInfo) {
+      setUserInfo(userInfo);
     }
   }, []);
 
@@ -41,7 +41,7 @@ export const Header = () => {
         <figure className="h-9 w-9">
           <img
             className="w-full object-cover"
-            src={items.foto ? items.foto : UserDefault}
+            src={userInfo.foto ? userInfo.foto : UserDefault}
             alt="user profile"
           />
         </figure>

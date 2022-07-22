@@ -1,11 +1,14 @@
+import { useEffect, useState } from 'react';
 import { Button, Input } from '@elements/atoms';
 import { useForm } from 'react-hook-form';
+import { useFoodService } from '../../../../services';
 
-export const ModalAddFood = () => {
+export const ModalAddFood = ({ onSubmit }) => {
   const {
     register,
     setValue,
     handleSubmit,
+    getValues,
     formState,
     watch,
     formState: { errors },
@@ -13,7 +16,9 @@ export const ModalAddFood = () => {
     mode: 'onChange',
     reValidateMode: 'onChange',
   });
-
+  
+  const { useCreateFood } = useFoodService();
+  const [userInfo, setUserInfo] = useState({});
   const watchFoodType = watch('foodType');
 
   const foodList = [
@@ -22,19 +27,42 @@ export const ModalAddFood = () => {
     { id: 3, name: 'Cena' },
   ];
 
-  const onSubmit = async () => {
-    console.log('execute');
-    const formData = new FormData();
-    formData.append('foodType');
+  // const onSubmit = async () => {
+  //   console.log('execute');
+  //   const formData = new FormData();
+  //   formData.append('food', getValues('food'));
+  //   formData.append('calories', getValues('calories'));
+    
 
-    // const formData = new FormData();
-    // formData.append('food', getValues('food'));
-    // formData.append('password', getValues('password'));
-  };
+  //   // try {
+  //   //   const resFood = await useCreateFood(
+  //   //     getValues('food'),
+  //   //     getValues('calories')
+  //   //   );
+  //   //   console.log(resFood, 'user respons 2e');
+  //   // } catch (e) {
+  //   //   console.log(e);
+  //   // } finally {
+
+  //   // }
+  //   // const formData = new FormData();
+
+  // };
+
+  useEffect(() => {
+    const userInfo = JSON.parse(localStorage.getItem('userInfo'));
+    if (userInfo) {
+      setUserInfo(userInfo);
+    }
+  }, []);
+
+  const handleSubmitEvent = () => {
+    onSubmit(getValues())
+  }
 
   return (
     <div>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(handleSubmitEvent)}>
         <div className="form-group">
           <Input
             placeholder="Ingresa su comida"

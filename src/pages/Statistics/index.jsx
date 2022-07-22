@@ -5,7 +5,7 @@ import { Button } from '@elements/atoms';
 import Icon from '@elements/atoms/Icon';
 import { LineChart } from '@elements/molecules';
 import {
-  CardListFood,
+  CardListMeal,
   GridWrapper,
   Header,
   ModalAddFood2,
@@ -17,7 +17,7 @@ import { useReportService } from '../../services';
 export const Statistics = () => {
   const { useGetReport } = useReportService();
 
-  const [items, setItems] = useState({ nombres: 'Marco' });
+  const [userInfo, setUserInfor] = useState({ nombres: 'Marco', idUsuario: 1 });
   const [count, setCount] = useState(0);
   const [scores, setScores] = useState([]);
   const [labelsMobile, setLabelsMobile] = useState([]);
@@ -26,7 +26,7 @@ export const Statistics = () => {
 
   const getData = async () => {
     try {
-      const respUser = await useGetReport(items.idUsuario);
+      const respUser = await useGetReport(userInfo.idUsuario);
       const days = [];
       const data = [];
       console.log(respUser, 'reports respons 2e');
@@ -45,9 +45,9 @@ export const Statistics = () => {
   };
 
   useEffect(() => {
-    const items = JSON.parse(localStorage.getItem('items'));
-    if (items) {
-      setItems(items);
+    const userInfo = JSON.parse(localStorage.getItem('userInfo'));
+    if (userInfo) {
+      setUserInfor(userInfo);
       getData();
     }
   }, []);
@@ -60,7 +60,7 @@ export const Statistics = () => {
         <LayoutIntern>
           <div>
             <h1 className="text-heading-01 font-semibold">
-              Hola, {items.nombres}.
+              Hola, {userInfo.nombres}.
             </h1>
             <p className="mt-1 font-medium text-primary-grey-300">
               Aqui encontrarás tus estadisticas de calorias diarias.
@@ -71,11 +71,13 @@ export const Statistics = () => {
             <h2 className="mb-9 text-heading-03 font-semibold">
               Calorias consumidas
             </h2>
-            <LineChart />
+            {count && <LineChart labelsMobile={labelsMobile} labelsDesktop={labelsDesktop} scores={scores}/>}
+            
           </div>
+          
           <div className="relative mt-12">
             <div className="mb-4 flex justify-between lg:mb-10">
-              <h1 className="text-heading-01 font-semibold">Alimentos</h1>
+              <h1 className="text-heading-01 font-semibold">Comidas</h1>
 
               <Button
                 onClick={() => setOpenModal(!openModal)}
@@ -94,19 +96,13 @@ export const Statistics = () => {
               </Button>
             </div>
 
-            <CardListFood
+            <CardListMeal
               openModal={openModal}
               onClose={() => setOpenModal(false)}
             >
               <ModalAddFood2 />
-            </CardListFood>
-            {count && (
-              <LineChart
-                labelsMobile={labelsMobile}
-                labelsDesktop={labelsDesktop}
-                scores={scores}
-              />
-            )}
+            </CardListMeal>
+
           </div>
         </LayoutIntern>
       </GridWrapper>
