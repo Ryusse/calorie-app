@@ -1,8 +1,19 @@
+import { useEffect, useState } from 'react';
+
 import { Navigation } from '@elements/molecules';
 
 import UserDefault from '../../../../assets/images/user-default.png';
 
 export const MenuDashboardMobile = ({ open, refMenu, onClose }) => {
+  const [userInfo, setUserInfo] = useState({ nombres: 'jajaja' });
+
+  useEffect(() => {
+    const userInfo = JSON.parse(localStorage.getItem('userInfo'));
+    if (userInfo) {
+      setUserInfo(userInfo);
+    }
+  }, []);
+
   return (
     <div className={`z-30 block lg:hidden`}>
       <div
@@ -14,17 +25,17 @@ export const MenuDashboardMobile = ({ open, refMenu, onClose }) => {
         <div>
           <figure className="mx-auto h-16 w-16 rounded-full">
             <img
-              src={UserDefault}
-              className="h-full w-full object-cover"
+              className="w-full object-cover"
+              src={userInfo.foto ? userInfo.foto : UserDefault}
               alt="user profile"
             />
           </figure>
 
           <p className="mt-4 text-center text-paragraph-01 font-semibold">
-            Joel Angel
+            {userInfo.nombres}
           </p>
           <p className="mt-1 mb-4 text-center text-paragraph-03 text-primary-grey-300">
-            @joelangel99
+            @ {userInfo.nombres}
           </p>
         </div>
         <Navigation onClose={() => onClose} />
