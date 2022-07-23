@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
+
 import { Button, Input } from '@elements/atoms';
 import { useForm } from 'react-hook-form';
+
 import { useFoodService } from '../../../../services';
 
 export const ModalAddFood = ({ onSubmit }) => {
@@ -16,7 +18,7 @@ export const ModalAddFood = ({ onSubmit }) => {
     mode: 'onChange',
     reValidateMode: 'onChange',
   });
-  
+
   const { useCreateFood } = useFoodService();
   const [userInfo, setUserInfo] = useState({});
   const watchFoodType = watch('foodType');
@@ -32,7 +34,6 @@ export const ModalAddFood = ({ onSubmit }) => {
   //   const formData = new FormData();
   //   formData.append('food', getValues('food'));
   //   formData.append('calories', getValues('calories'));
-    
 
   //   // try {
   //   //   const resFood = await useCreateFood(
@@ -57,8 +58,8 @@ export const ModalAddFood = ({ onSubmit }) => {
   }, []);
 
   const handleSubmitEvent = () => {
-    onSubmit(getValues())
-  }
+    onSubmit(getValues());
+  };
 
   return (
     <div>

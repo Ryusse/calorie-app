@@ -9,9 +9,9 @@ export const useFoodService = () => {
 
   const useCreateFood = async (name, calories) => {
     return await axiosClient
-      .post('alimento/registrar',{
-        "nombre": name,
-        "calorias": calories
+      .post('alimento/registrar', {
+        nombre: name,
+        calorias: calories,
       })
       .then((response) => response.data);
   };
