@@ -18,22 +18,29 @@ export const AuthLogin = () => {
     reValidateMode: 'onChange',
   });
   const { useLogin } = useUserService();
-  const [userInfo, setUserInfo] = useState([]);
+  const [userInfo, setUserInfo] = useState({});
 
   const navigate = useNavigate();
 
   const onSubmit = async () => {
+    console.log('execute');
+    const formData = new FormData();
+    formData.append('userName', getValues('userName'));
+    formData.append('password', getValues('password'));
+
     try {
       const respUser = await useLogin(
         getValues('userName'),
         getValues('password')
       );
-
+      console.log(respUser, 'user respons 2e');
       setUserInfo(respUser);
+      // alert('Bienvenido ' + respUser.nombres);
+      if (typeof window !== 'undefined') {
+        window.location.href = '/statistics';
+      }
     } catch (e) {
       console.log(e);
-    } finally {
-      navigate('/');
     }
   };
 

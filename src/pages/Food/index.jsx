@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { LayoutIntern } from '@components/LayoutIntern';
 import { Button } from '@elements/atoms';
@@ -11,14 +11,35 @@ import {
   Sidebar,
 } from '@elements/organisms';
 
+import { useFoodService } from '../../services';
+
 export const Food = () => {
   const [openModal, setOpenModal] = useState(false);
+  const { useCreateFood } = useFoodService();
+  const [userInfo, setUserInfo] = useState({});
+  const [refresh, setRefresh] = useState(true);
 
-  const onSubmit = ({ food, calories }) => {
+  const onSubmit = async ({ food, calories }) => {
     // guardar los datos en la api
     // cerrar el modal
-    setOpenModal(false);
+    try {
+      setRefresh(false);
+      const resFood = await useCreateFood(food, calories);
+      console.log(resFood, 'user respons 2e');
+      setOpenModal(false);
+      setRefresh(true);
+    } catch (e) {
+      console.log(e);
+      alert('ERROR AL REGISTRAR EL ALIMENTO');
+    }
   };
+
+  useEffect(() => {
+    const userInfo = JSON.parse(localStorage.getItem('userInfo'));
+    if (userInfo) {
+      setUserInfo(userInfo);
+    }
+  }, []);
 
   return (
     <>
@@ -45,12 +66,14 @@ export const Food = () => {
               <Icon name="icAdd" className="h-5 w-5" />
             </Button>
           </div>
-          <CardListFood
-            openModal={openModal}
-            onClose={() => setOpenModal(false)}
-          >
-            <ModalAddFood onSubmit={onSubmit} />
-          </CardListFood>
+          {refresh && (
+            <CardListFood
+              openModal={openModal}
+              onClose={() => setOpenModal(false)}
+            >
+              <ModalAddFood onSubmit={onSubmit} />
+            </CardListFood>
+          )}
         </LayoutIntern>
       </GridWrapper>
     </>

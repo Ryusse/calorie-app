@@ -5,6 +5,14 @@ import { NavLink } from 'react-router-dom';
 export const Navigation = ({ onClose }) => {
   const { width } = useWindowDimensions();
 
+  const handleLogout = () => {
+    localStorage.clear();
+
+    if (typeof window !== 'undefined') {
+      window.location.href = '/';
+    }
+  };
+
   return (
     <div className="grid h-full grid-rows-[auto_auto_1fr] overflow-y-auto">
       <div className="border-t border-primary-grey-600 py-5 lg:border-0">
@@ -19,7 +27,7 @@ export const Navigation = ({ onClose }) => {
             >
               <NavLink
                 className="nav-link flex items-center gap-3 py-3 px-4 text-paragraph-02 font-medium text-primary-grey-500 after:absolute after:left-0 after:hidden after:h-full after:w-[2.5px] after:rounded-[10px] after:bg-primary-red-300 after:content-['']"
-                to="/"
+                to="/statistics"
               >
                 <Icon
                   name="icStatistics"
@@ -87,7 +95,7 @@ export const Navigation = ({ onClose }) => {
 
       <div className="mt-auto cursor-pointer border-t border-primary-grey-600 pt-5">
         <nav className="">
-          <ul className="text-paragraph-01">
+          <ul onClick={() => handleLogout()} className="text-paragraph-01">
             <li
               onClick={() => (width < 1023 ? onClose() : null)}
               className="relative"

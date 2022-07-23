@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import { Button, Input } from '@elements/atoms';
 import { useForm } from 'react-hook-form';
@@ -35,27 +35,9 @@ export const ModalAddFood = ({ onSubmit }) => {
   //   formData.append('food', getValues('food'));
   //   formData.append('calories', getValues('calories'));
 
-  //   // try {
-  //   //   const resFood = await useCreateFood(
-  //   //     getValues('food'),
-  //   //     getValues('calories')
-  //   //   );
-  //   //   console.log(resFood, 'user respons 2e');
-  //   // } catch (e) {
-  //   //   console.log(e);
-  //   // } finally {
-
-  //   // }
   //   // const formData = new FormData();
 
   // };
-
-  useEffect(() => {
-    const userInfo = JSON.parse(localStorage.getItem('userInfo'));
-    if (userInfo) {
-      setUserInfo(userInfo);
-    }
-  }, []);
 
   const handleSubmitEvent = () => {
     onSubmit(getValues());

@@ -12,10 +12,11 @@ import {
   Sidebar,
 } from '@elements/organisms';
 
-import { useReportService } from '../../services';
+import { useMealService, useReportService } from '../../services';
 
 export const Statistics = () => {
   const { useGetReport } = useReportService();
+  const { useCreateMeal } = useMealService();
 
   const [userInfo, setUserInfor] = useState({ nombres: 'Marco', idUsuario: 1 });
   const [count, setCount] = useState(0);
@@ -23,6 +24,7 @@ export const Statistics = () => {
   const [labelsMobile, setLabelsMobile] = useState([]);
   const [openModal, setOpenModal] = useState(false);
   const [labelsDesktop, setLabelsDesktop] = useState([]);
+  const [refresh, setRefresh] = useState(true);
 
   const getData = async () => {
     try {
@@ -41,6 +43,27 @@ export const Statistics = () => {
       setCount(days.length);
     } catch (e) {
       console.log(e);
+    }
+  };
+
+  const onSubmit = async (tipo, alimento) => {
+    // guardar los datos en la api
+    // cerrar el modal
+    try {
+      console.log(tipo, alimento, 'modal 2 resultado');
+      setRefresh(false);
+      const resMeal = await useCreateMeal(
+        tipo,
+        alimento.id,
+        userInfo.idUsuario,
+        new Date()
+      );
+      console.log(resMeal, 'user respons 2e');
+      setOpenModal(false);
+      setRefresh(true);
+    } catch (e) {
+      console.log(e);
+      alert('ERROR AL REGISTRAR LA COMIDA');
     }
   };
 
@@ -71,7 +94,7 @@ export const Statistics = () => {
             <h2 className="mb-9 text-heading-03 font-semibold">
               Calorias consumidas
             </h2>
-            {count && (
+            {refresh && count && (
               <LineChart
                 labelsMobile={labelsMobile}
                 labelsDesktop={labelsDesktop}
@@ -101,12 +124,14 @@ export const Statistics = () => {
               </Button>
             </div>
 
-            <CardListMeal
-              openModal={openModal}
-              onClose={() => setOpenModal(false)}
-            >
-              <ModalAddFood2 />
-            </CardListMeal>
+            {refresh && (
+              <CardListMeal
+                openModal={openModal}
+                onClose={() => setOpenModal(false)}
+              >
+                <ModalAddFood2 onSubmit={onSubmit} />
+              </CardListMeal>
+            )}
           </div>
         </LayoutIntern>
       </GridWrapper>
